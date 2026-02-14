@@ -1,8 +1,8 @@
 <template>
   <HeaderApp />
-  <HelloWorld />
+  <CardProducts />
 </template>
 
 <script setup>
-  //
+//
 </script>
