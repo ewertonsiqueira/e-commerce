@@ -1,12 +1,15 @@
 <template>
   <v-navigation-drawer permanent location="right" width="500">
+    <div class="d-flex h-100 align-center justify-center">
+      <div class="font-weight-bold">O seu carrinho está vazio.</div>
+    </div>
     <div class="d-flex flex-column h-100">
       <div class="d-flex align-center justify-space-between pa-4">
         <h4>Carrinho de Compra</h4>
         <v-btn icon="mdi-close"></v-btn>
       </div>
       <div>
-        <v-list>
+        <v-list class="h-100 overflow-y-auto">
           <v-list-item v-for="(item, index) in 5" :key="index">
             <div class="d-flex">
               <div class="mr-4">
@@ -50,8 +53,24 @@
       </div>
     </div>
     <template v-slot:append>
-      <div class="pa-2">
-        <v-btn> Finalizar Compra </v-btn>
+      <div class="d-flex justify-space-between ma-4">
+        <div>Total:</div>
+        <div>
+          <strong>R$ 100,00</strong>
+        </div>
+      </div>
+      <v-divider class="mb-2"></v-divider>
+
+      <div class="d-flex align-center justify-center">
+        <div class="pa-2">
+          <v-btn color="primary" class="text-capitalize">
+            Finalizar Compra
+          </v-btn>
+          Ou
+          <v-btn color="primary" class="text-capitalize">
+            Continuar Comprando
+          </v-btn>
+        </div>
       </div>
     </template>
   </v-navigation-drawer>
