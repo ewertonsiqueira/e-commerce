@@ -1,64 +1,142 @@
-# Vuetify (Default)
+# E-Commerce
 
-This is the official scaffolding tool for Vuetify, designed to give you a head start in building your new Vuetify application. It sets up a base template with all the necessary configurations and standard directory structure, enabling you to begin development without the hassle of setting up the project from scratch.
+Uma aplicação moderna de e-commerce desenvolvida com Vue 3, Vuetify e Vite.
 
-## ❗️ Important Links
+## 🚀 Tecnologias
 
-- 📄 [Docs](https://vuetifyjs.com/)
-- 🚨 [Issues](https://issues.vuetifyjs.com/)
-- 🏬 [Store](https://store.vuetifyjs.com/)
-- 🎮 [Playground](https://play.vuetifyjs.com/)
-- 💬 [Discord](https://community.vuetifyjs.com)
+- **Vue 3** - Framework JavaScript progressivo
+- **Vuetify 3** - Framework de componentes Material Design
+- **Vue Router** - Roteamento oficial do Vue.js
+- **Vite** - Build tool de última geração
+- **ESLint** - Linter para manter a qualidade do código
 
-## 💿 Install
+## 📋 Pré-requisitos
 
-Set up your project using your preferred package manager. Use the corresponding command to install the dependencies:
+- Node.js (versão 16 ou superior)
+- npm, yarn, pnpm ou bun
 
-| Package Manager                                                | Command        |
-|---------------------------------------------------------------|----------------|
-| [yarn](https://yarnpkg.com/getting-started)                   | `yarn install` |
-| [npm](https://docs.npmjs.com/cli/v7/commands/npm-install)     | `npm install`  |
-| [pnpm](https://pnpm.io/installation)                          | `pnpm install` |
-| [bun](https://bun.sh/#getting-started)                        | `bun install`  |
+## 💿 Instalação
 
-After completing the installation, your environment is ready for Vuetify development.
-
-## ✨ Features
-
-- 🖼️ **Optimized Front-End Stack**: Leverage the latest Vue 3 and Vuetify 3 for a modern, reactive UI development experience. [Vue 3](https://v3.vuejs.org/) | [Vuetify 3](https://vuetifyjs.com/en/)
-- 🗃️ **State Management**: Integrated with [Pinia](https://pinia.vuejs.org/), the intuitive, modular state management solution for Vue.
-- 🚦 **Routing and Layouts**: Utilizes Vue Router for SPA navigation and vite-plugin-vue-layouts for organizing Vue file layouts. [Vue Router](https://router.vuejs.org/) | [vite-plugin-vue-layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
-- ⚡ **Next-Gen Tooling**: Powered by Vite, experience fast cold starts and instant HMR (Hot Module Replacement). [Vite](https://vitejs.dev/)
-- 🧩 **Automated Component Importing**: Streamline your workflow with unplugin-vue-components, automatically importing components as you use them. [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
-
-These features are curated to provide a seamless development experience from setup to deployment, ensuring that your Vuetify application is both powerful and maintainable.
-
-## 💡 Usage
-
-This section covers how to start the development server and build your project for production.
-
-### Starting the Development Server
-
-To start the development server with hot-reload, run the following command. The server will be accessible at [http://localhost:3000](http://localhost:3000):
+1. Clone o repositório:
 
 ```bash
-yarn dev
+git clone https://github.com/ewertonsiqueira/e-commerce.git
+cd ecommerce
 ```
 
-(Repeat for npm, pnpm, and bun with respective commands.)
+2. Instale as dependências usando seu gerenciador de pacotes preferido:
 
-> Add NODE_OPTIONS='--no-warnings' to suppress the JSON import warnings that happen as part of the Vuetify import mapping. If you are on Node [v21.3.0](https://nodejs.org/en/blog/release/v21.3.0) or higher, you can change this to NODE_OPTIONS='--disable-warning=5401'. If you don't mind the warning, you can remove this from your package.json dev script.
+| Gerenciador de Pacotes | Comando        |
+| ---------------------- | -------------- |
+| npm                    | `npm install`  |
+| yarn                   | `yarn install` |
+| pnpm                   | `pnpm install` |
+| bun                    | `bun install`  |
 
-### Building for Production
+## 💡 Scripts Disponíveis
 
-To build your project for production, use:
+### Servidor de Desenvolvimento
+
+Inicie o servidor de desenvolvimento com hot-reload:
 
 ```bash
-yarn build
+npm run dev
 ```
 
-(Repeat for npm, pnpm, and bun with respective commands.)
+O servidor estará acessível em [http://localhost:3000](http://localhost:3000)
 
+### Build de Produção
+
+Gere a versão otimizada para produção:
+
+```bash
+npm run build
+```
+
+### Preview da Build
+
+Visualize a build de produção localmente:
+
+```bash
+npm run preview
+```
+
+### Lint
+
+Execute o ESLint para verificar e corrigir problemas no código:
+
+```bash
+npm run lint
+```
+
+## 📁 Estrutura do Projeto
+
+```
+ecommerce/
+├── public/              # Arquivos estáticos
+├── src/
+│   ├── assets/         # Recursos (imagens, ícones, etc.)
+│   ├── components/     # Componentes Vue reutilizáveis
+│   │   ├── AppFooter.vue
+│   │   ├── CardProducts.vue
+│   │   ├── HeaderApp.vue
+│   │   └── NavigationDrawer.vue
+│   ├── composables/    # Composables Vue (lógica reutilizável)
+│   │   └── userCart.js
+│   ├── pages/          # Páginas da aplicação
+│   ├── plugins/        # Plugins Vue (Vuetify, etc.)
+│   ├── router/         # Configuração de rotas
+│   ├── styles/         # Estilos globais e configurações SCSS
+│   ├── utils/          # Funções utilitárias
+│   ├── App.vue         # Componente raiz
+│   └── main.js         # Ponto de entrada da aplicação
+├── database.json       # Dados mockados
+├── package.json
+└── vite.config.mjs     # Configuração do Vite
+```
+
+## ✨ Funcionalidades
+
+- 🖼️ **Interface Moderna**: Utilizando Vue 3 e Vuetify 3 para uma experiência reativa e responsiva
+- 🛒 **Carrinho de Compras**: Sistema de carrinho implementado com composables Vue
+- 🎨 **Material Design**: Interface baseada em Material Design 3 via Vuetify
+- 🚦 **Roteamento Automático**: Via unplugin-vue-router para navegação SPA
+- 🧩 **Auto-importação de Componentes**: Componentes importados automaticamente conforme uso
+- ⚡ **Hot Module Replacement**: Desenvolvimento rápido com Vite e HMR instantâneo
+- 📱 **Design Responsivo**: Adaptável a diferentes tamanhos de tela
+- 🎯 **Navigation Drawer**: Menu lateral para navegação
+- 🏷️ **Catálogo de Produtos**: Sistema de exibição de produtos com cards
+
+## 🛠️ Configuração
+
+O projeto utiliza diversas ferramentas modernas:
+
+- **Auto-importação de componentes** via `unplugin-vue-components`
+- **Roteamento automático** via `unplugin-vue-router`
+- **Fontes customizadas** via `unplugin-fonts` com Roboto
+- **Tema Vuetify** configurável em `src/styles/settings.scss`
+- **Material Design Icons** via `@mdi/font`
+
+## 📝 Licença
+
+Este projeto é privado.
+
+## 👨‍💻 Autor
+
+**Ewerton Siqueira**
+
+- GitHub: [@ewertonsiqueira](https://github.com/ewertonsiqueira)
+
+## 📚 Links Importantes
+
+- 📄 [Documentação Vue 3](https://v3.vuejs.org/)
+- 📄 [Documentação Vuetify 3](https://vuetifyjs.com/)
+- 📄 [Documentação Vite](https://vitejs.dev/)
+- 🎮 [Vuetify Playground](https://play.vuetifyjs.com/)
+
+---
+
+Desenvolvido com ❤️ usando Vue 3 e Vuetify
 Once the build process is completed, your application will be ready for deployment in a production environment.
 
 ## 💪 Support Vuetify Development
@@ -74,6 +152,7 @@ This project is built with [Vuetify](https://vuetifyjs.com/en/), a UI Library wi
 - [Making a one-time donation with Paypal](https://paypal.me/vuetify)
 
 ## 📑 License
+
 [MIT](http://opensource.org/licenses/MIT)
 
 Copyright (c) 2016-present Vuetify, LLC
