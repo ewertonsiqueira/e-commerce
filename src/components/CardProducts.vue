@@ -1,20 +1,28 @@
 <template>
   <v-container>
-    <v-row no-gutters>
-      <v-col cols="12" sm="6" md="4" lg="3" v-for="i in 8" :key="i">
-        <v-card>
+    <v-row no-gutters class="h-100">
+      <v-col
+        cols="12"
+        sm="6"
+        md="4"
+        lg="3"
+        v-for="product in products"
+        :key="product.id"
+      >
+        <v-card class="ma-2" style="border: 1px solid red">
           <div class="bg-white py-2 px-6">
-            <v-img
-              src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRYVLa4GF-t9_826yweNjj1QsQF3KM9gIynjEMCA1FBVh-BOkSJbmnKQeCY4wv1KiV9IdKIQhvdeofgYCnS8qcOkjNBOM9e"
-              alt=""
-            />
+            <v-img :src="product.image" :alt="product.name" />
           </div>
           <v-card-text>
-            <h4>Descrição do Produto</h4>
+            <h4>{{ product.name }}</h4>
             <div class="my-5">
-              <div class="font-weight-light">Preço real aqui</div>
-              <div class="text-h5 font-weight-bold">Preço com Desconto</div>
-              <div class="font-weight-light">Info que será no pix</div>
+              <div class="font-weight-light">
+                {{ formatPrice(product.price) }}
+              </div>
+              <div class="text-h5 font-weight-bold">
+                {{ formatPrice(product.promotion) }}
+              </div>
+              <div class="font-weight-light">{{ product.conditions }}</div>
             </div>
             <v-btn block color="primary">Comprar</v-btn>
           </v-card-text>
@@ -23,3 +31,25 @@
     </v-row>
   </v-container>
 </template>
+
+<script setup>
+import { formatPrice } from "@/utils";
+import { onMounted, ref } from "vue";
+
+const products = ref([]);
+
+onMounted(() => {
+  fetchProducts();
+});
+
+function fetchProducts() {
+  fetch("http://localhost:8000/products")
+    .then((response) => response.json())
+    .then((data) => {
+      products.value = data;
+    })
+    .catch((error) => {
+      console.error("Error fetching products:", error);
+    });
+}
+</script>
