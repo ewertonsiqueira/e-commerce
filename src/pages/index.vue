@@ -1,6 +1,4 @@
 <template>
-  <NavigationDrawer />
-  <HeaderApp />
   <CardProducts />
 </template>
 

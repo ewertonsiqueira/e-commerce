@@ -1,12 +1,12 @@
 <template>
-  <v-navigation-drawer permanent location="right" width="500">
+  <v-navigation-drawer v-model="isOpen" temporary location="right" width="500">
     <div class="d-flex h-100 align-center justify-center">
       <div class="font-weight-bold">O seu carrinho está vazio.</div>
     </div>
     <div class="d-flex flex-column h-100">
       <div class="d-flex align-center justify-space-between pa-4">
         <h4>Carrinho de Compra</h4>
-        <v-btn icon="mdi-close"></v-btn>
+        <v-btn @click="close" icon="mdi-close"></v-btn>
       </div>
       <div>
         <v-list class="h-100 overflow-y-auto">
@@ -67,7 +67,7 @@
             Finalizar Compra
           </v-btn>
           Ou
-          <v-btn color="primary" class="text-capitalize">
+          <v-btn color="primary" class="text-capitalize" @click="close">
             Continuar Comprando
           </v-btn>
         </div>
@@ -75,3 +75,8 @@
     </template>
   </v-navigation-drawer>
 </template>
+
+<script setup>
+import { useUserCart } from "@/composables/userCart";
+const { isOpen, close } = useUserCart();
+</script>
