@@ -4,7 +4,11 @@
     <v-toolbar-title>E-commerce Tabajara</v-toolbar-title>
     <template #append>
       <v-btn @click="open">
-        <v-badge color="success" content="99+" location="top right">
+        <v-badge
+          color="primary"
+          :content="cartItems.length"
+          location="top right"
+        >
           <v-icon icon="mdi-cart" />
         </v-badge>
       </v-btn>
@@ -16,5 +20,5 @@ import { useTheme } from "vuetify";
 import { useUserCart } from "@/composables/userCart";
 
 const theme = useTheme();
-const { open } = useUserCart();
+const { open, cartItems } = useUserCart();
 </script>

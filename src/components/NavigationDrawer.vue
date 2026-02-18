@@ -1,16 +1,19 @@
 <template>
   <v-navigation-drawer v-model="isOpen" temporary location="right" width="500">
-    <div class="d-flex h-100 align-center justify-center">
+    <div
+      v-if="cartItems.length === 0"
+      class="d-flex h-100 align-center justify-center"
+    >
       <div class="font-weight-bold">O seu carrinho está vazio.</div>
     </div>
-    <div class="d-flex flex-column h-100">
+    <div class="d-flex flex-column h-100" v-else>
       <div class="d-flex align-center justify-space-between pa-4">
         <h4>Carrinho de Compra</h4>
         <v-btn @click="close" icon="mdi-close"></v-btn>
       </div>
       <div>
         <v-list class="h-100 overflow-y-auto">
-          <v-list-item v-for="(item, index) in 5" :key="index">
+          <v-list-item v-for="(item, index) in cartItems" :key="item.id">
             <div class="d-flex">
               <div class="mr-4">
                 <img
@@ -22,14 +25,15 @@
 
               <div class="d-flex flex-column justify-space-between">
                 <div>
-                  <h5>Descricao Produto</h5>
+                  <h5>{{ item.name }}</h5>
                   <div>
-                    <strong>Produto {{ index + 1 }}</strong>
+                    <strong>{{ formatPrice(item.promotion) }}</strong>
                   </div>
                 </div>
                 <div class="d-flex align-center justify-space-between">
                   <div class="w-50">
                     <v-text-field
+                      v-model="item.quantity"
                       type="number"
                       min="0"
                       variant="outlined"
@@ -77,6 +81,7 @@
 </template>
 
 <script setup>
+import { formatPrice } from "@/utils";
 import { useUserCart } from "@/composables/userCart";
-const { isOpen, close } = useUserCart();
+const { isOpen, close, cartItems } = useUserCart();
 </script>

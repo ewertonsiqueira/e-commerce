@@ -9,7 +9,7 @@
         v-for="product in products"
         :key="product.id"
       >
-        <v-card class="ma-2" style="border: 1px solid red">
+        <v-card class="ma-2">
           <div class="bg-white py-2 px-6">
             <v-img :src="product.image" :alt="product.name" />
           </div>
@@ -24,7 +24,14 @@
               </div>
               <div class="font-weight-light">{{ product.conditions }}</div>
             </div>
-            <v-btn block color="primary">Comprar</v-btn>
+            <v-btn
+              block
+              color="primary"
+              @click="addToCart(product)"
+              :loading="loading"
+              >Comprar</v-btn
+            >
+            {{ loading }}
           </v-card-text>
         </v-card>
       </v-col>
@@ -35,8 +42,10 @@
 <script setup>
 import { formatPrice } from "@/utils";
 import { onMounted, ref } from "vue";
+import { useUserCart } from "@/composables/userCart";
 
 const products = ref([]);
+const { addToCart, loading } = useUserCart();
 
 onMounted(() => {
   fetchProducts();
