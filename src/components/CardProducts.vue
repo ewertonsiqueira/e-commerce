@@ -31,7 +31,6 @@
               :loading="loading"
               >Comprar</v-btn
             >
-            {{ loading }}
           </v-card-text>
         </v-card>
       </v-col>

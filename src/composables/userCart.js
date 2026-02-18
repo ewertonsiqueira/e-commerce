@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const isOpen = ref(false);
 const cartItems = ref([]);
@@ -28,6 +28,17 @@ export const useUserCart = () => {
     loading.value = false;
   }
 
+  function removeFromCart(productId) {
+    cartItems.value = cartItems.value.filter((item) => item.id !== productId);
+  }
+
+  const totalPrice = computed(() => {
+    return cartItems.value.reduce((total, item) => {
+      const finalPrice = item.promotion || item.price;
+      return total + finalPrice * item.quantity;
+    }, 0);
+  });
+
   return {
     isOpen,
     open,
@@ -35,5 +46,7 @@ export const useUserCart = () => {
     addToCart,
     cartItems,
     loading,
+    removeFromCart,
+    totalPrice,
   };
 };

@@ -27,7 +27,9 @@
                 <div>
                   <h5>{{ item.name }}</h5>
                   <div>
-                    <strong>{{ formatPrice(item.promotion) }}</strong>
+                    <strong>{{
+                      formatPrice(item.promotion || item.price)
+                    }}</strong>
                   </div>
                 </div>
                 <div class="d-flex align-center justify-space-between">
@@ -35,7 +37,7 @@
                     <v-text-field
                       v-model="item.quantity"
                       type="number"
-                      min="0"
+                      min="1"
                       variant="outlined"
                       label="Quantidade"
                       density="compact"
@@ -44,6 +46,8 @@
                   </div>
                   <div>
                     <v-btn
+                      @click.stop.prevent="removeFromCart(item.id)"
+                      color="red"
                       elevation="0"
                       density="compact"
                       icon="mdi-delete"
@@ -60,7 +64,7 @@
       <div class="d-flex justify-space-between ma-4">
         <div>Total:</div>
         <div>
-          <strong>R$ 100,00</strong>
+          <strong>{{ formatPrice(totalPrice) }}</strong>
         </div>
       </div>
       <v-divider class="mb-2"></v-divider>
@@ -83,5 +87,5 @@
 <script setup>
 import { formatPrice } from "@/utils";
 import { useUserCart } from "@/composables/userCart";
-const { isOpen, close, cartItems } = useUserCart();
+const { isOpen, close, cartItems, removeFromCart, totalPrice } = useUserCart();
 </script>
