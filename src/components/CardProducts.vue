@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row no-gutters class="h-100">
       <v-col
         cols="12"
@@ -9,7 +9,7 @@
         v-for="product in products"
         :key="product.id"
       >
-        <v-card class="ma-2">
+        <v-card class="ma-2" elevation="0" border>
           <div class="bg-white py-2 px-6">
             <v-img :src="product.image" :alt="product.name" />
           </div>
@@ -19,7 +19,7 @@
               <div class="font-weight-light">
                 {{ formatPrice(product.price) }}
               </div>
-              <div class="text-h5 font-weight-bold">
+              <div class="text-h5 font-weight-bold" v-if="product.promotion">
                 {{ formatPrice(product.promotion) }}
               </div>
               <div class="font-weight-light">{{ product.conditions }}</div>
